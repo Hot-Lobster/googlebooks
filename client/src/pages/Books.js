@@ -28,7 +28,13 @@ class Books extends Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ authors: res.data, description: "", image: "", link: "", title: "" })
+        this.setState({
+          authors: res.data,
+          description: "",
+          image: "",
+          link: "",
+          title: ""
+        })
       )
       .catch(err => console.log(err));
   };
@@ -52,7 +58,7 @@ class Books extends Component {
       API.getBook({
         title: this.state.title
       })
-        .then(res => console.log(res)) /* this.loadBooks() */
+        .then(res => this.loadBooks())
         .catch(err => console.log(err));
     }
   };
