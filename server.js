@@ -22,3 +22,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglis
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+const db = mongoose.connection
+
+db.on('error', function(err){
+  console.log('Mongoose Error: ', err)
+})
+
+db.once('open', function(){
+  console.log('Connection successful')
+})
